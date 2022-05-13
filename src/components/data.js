@@ -1,7 +1,9 @@
 export const data = [
-    "Linguagens script",
+    "JavaScript",
     "HTML",
     "CSS",
     "React",
-    "PHP"
+    "PHP",
+    "Lua",
+    "Angular"
 ]

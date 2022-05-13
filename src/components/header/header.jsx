@@ -3,14 +3,13 @@ import '../reset.css';
 import './header.css';
 
 const Header = (props) => {
-    const {onGridChange} = props;
+    const {level, handleLevel} = props;
 
-    const [level, setLevel] = useState(0);
     const [gameStarted, setGame] = useState(false);
 
-    const handleLevel = (e) => {
-        setLevel(e.currentTarget.value);
-    }
+    // const handleLevel = (e) => {
+    //     setLevel(e.currentTarget.value);
+    // }
 
     const handleGame = () => {
         if (gameStarted) {
