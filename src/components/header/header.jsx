@@ -30,6 +30,7 @@ const Header = (props) => {
                     <option value="1">Simples</option>
                     <option value="2">Intermédio</option>
                     <option value="3">Avançado</option>
+                    <option value=""></option>
             </select>
             <br />
 

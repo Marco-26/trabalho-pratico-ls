@@ -1,7 +1,6 @@
 import React,{ useState } from "react";
 import '../reset.css';
 import './grid.css';
-import { possibleWords } from "../words/words";
 
 const Grid = (props) => {
     const {gridSize} = props;
