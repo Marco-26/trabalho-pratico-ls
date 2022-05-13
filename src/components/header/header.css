@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+h1{
+    color:black;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header{
+    margin-top:20px;
+    text-align: center;
+}
+
+.header select,button{
+    margin: 20px;
+}
+
+.header h4{
+    margin-top: 10px;
+}

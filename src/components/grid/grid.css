@@ -1,0 +1,29 @@
+.grid-container{
+    display: flex;
+    justify-content: center;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(8, 30px);
+}
+
+.cell{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    margin:0px;
+}
+
+.cell:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.words{
+    margin-left: 20px;
+}
+
+.words p {
+    margin-bottom: 5px;
+}
