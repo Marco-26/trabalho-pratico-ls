@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/trabalho-pratico-ls/static/css/main.b13221cb.css",
-    "main.js": "/trabalho-pratico-ls/static/js/main.91e0ca4a.js",
+    "main.js": "/trabalho-pratico-ls/static/js/main.4bb84b7d.js",
     "index.html": "/trabalho-pratico-ls/index.html",
     "main.b13221cb.css.map": "/trabalho-pratico-ls/static/css/main.b13221cb.css.map",
-    "main.91e0ca4a.js.map": "/trabalho-pratico-ls/static/js/main.91e0ca4a.js.map"
+    "main.4bb84b7d.js.map": "/trabalho-pratico-ls/static/js/main.4bb84b7d.js.map"
   },
   "entrypoints": [
     "static/css/main.b13221cb.css",
-    "static/js/main.91e0ca4a.js"
+    "static/js/main.4bb84b7d.js"
   ]
 }
