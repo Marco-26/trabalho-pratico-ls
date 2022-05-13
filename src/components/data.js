@@ -3,5 +3,5 @@ export const data = [
     "HTML",
     "CSS",
     "React",
-    
+    "PHP"
 ]

@@ -4,17 +4,17 @@ import './grid.css';
 import { data } from "../data"
 
 const Grid = (props) => {
-    const {gridSize} = props;
-
+    // const {gridSize} = props;
+    const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
     const[cells] = useState(Array.from({ length : 64 }))
-    
+    const newData = shuffle(data);
     return(
         <div className="grid-container">
             <div className="grid">
                 {cells.map(() => <div className="cell"></div>)}
             </div>
             <div className="words">
-                {data.map((word) => (
+                {newData.map((word) => (
                     <div>
                         <p>{word}</p>
                     </div>
