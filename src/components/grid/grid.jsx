@@ -34,10 +34,17 @@ const Grid = (props) => {
         words.push(newData[index]);      
     }
 
+    function randomChar() {
+        let char = '';
+        let characters = 'abcdefghijklmnopqrstuvwxyz';
+        char = characters.charAt(Math.floor(Math.random()*characters.length));
+        return char;
+     }     
+
     return(
         <div className="grid-container">
             <div className="grid">
-                {cells.map(() => <div className="cell"></div>)}
+                {cells.map(() => <div className="cell">{randomChar()}</div>)}
             </div>
             <div className="words">
                 {words.map((word) => (
