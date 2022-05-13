@@ -1,6 +1,7 @@
 import React,{ useState } from "react";
 import '../reset.css';
 import './grid.css';
+import { data } from "../data"
 
 const Grid = (props) => {
     const {gridSize} = props;
@@ -13,14 +14,11 @@ const Grid = (props) => {
                 {cells.map(() => <div className="cell"></div>)}
             </div>
             <div className="words">
-                {/* isto vai ser um array de palavras que estao num ficheiro */}
-                <p>Linguagens script</p>
-                <p>React</p>
-                <p>Html</p>
-                <p>Css</p>
-                <p>Backbone</p>
-                <p>Angular</p>
-                <p>Ember</p>
+                {data.map((word) => (
+                    <div>
+                        <p>{word}</p>
+                    </div>
+                ))}
             </div>
         </div>
     );
