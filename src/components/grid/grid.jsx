@@ -5,7 +5,7 @@ import { data } from "../data"
 
 const Grid = (props) => {
     const {level} = props;
-    const[cells] = useState(Array.from({ length : 64 }))
+    const [cells] = useState(Array.from({ length : 64 }))
     
     const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
     const newData = shuffle(data);
@@ -39,12 +39,24 @@ const Grid = (props) => {
         let characters = 'abcdefghijklmnopqrstuvwxyz';
         char = characters.charAt(Math.floor(Math.random()*characters.length));
         return char;
-     }     
+    }     
+    
+    // const namesArray = ["Rodrigo", "Alex"];
+
+    // namesArray.map(function (name) {
+    //     name.split('').forEach(function (char){
+    //         return (
+    //         <div>
+    //             <p>Hello {char}</p>
+    //         </div>)
+    //     }) 
+    // })
 
     return(
         <div className="grid-container">
             <div className="grid">
                 {cells.map(() => <div className="cell">{randomChar()}</div>)}
+                {/* {namesArray.map((name) => name.split('').forEach((char) => <div>{char}</div>))} */}
             </div>
             <div className="words">
                 {words.map((word) => (
