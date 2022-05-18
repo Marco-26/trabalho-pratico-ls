@@ -3,11 +3,6 @@
     justify-content: center;
 }
 
-.grid{
-    display: grid;
-    grid-template-columns: repeat(8, 30px);
-}
-
 .cell{
     width: 30px;
     height: 30px;
