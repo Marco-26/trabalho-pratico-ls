@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-const calcTimeLeft = t => {
+const calcTimeLeft = (t) => {
   if (!t) return 0;
 
   const left = t - new Date().getTime();
@@ -23,6 +23,7 @@ export default function useTimer(endTime) {
 
       if (targetLeft === 0) {
         clearInterval(timer);
+        return <div>Tempo acabou</div>   
       }
     }, 1000);
 
