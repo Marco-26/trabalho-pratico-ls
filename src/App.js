@@ -41,7 +41,7 @@ function App() {
     <div className="App">
       <Header gameStarted={gameStarted} handleGameStart={handleGameStart} popUp={modalTrigger} handleTrigger={setTrigger} level={level} handleLevel={handleLevel} timer={timer} />
       <Grid level={level} />
-      <Popup trigger={modalTrigger} setTrigger={handleTrigger} title="O tempo acabou!" buttonTxt="Fechar">
+      <Popup trigger={modalTrigger} handleTrigger={handleTrigger} title="O tempo acabou!" buttonTxt="Fechar">
         Para a próxima tente ser mais rápido!
       </Popup>
     </div>

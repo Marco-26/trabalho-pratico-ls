@@ -10,7 +10,7 @@ const Header = (props) => {
         <div className="header">
             <h1>Sopa de letras - Linguagens Script</h1>
             <h4>Pontuação: </h4>
-            <h4>Tempo restante: {gameStarted ? <Timer timer={timer} setTrigger={handleTrigger}/>:"00:00"}</h4>
+            <h4>Tempo restante: {gameStarted ? <Timer timer={timer} setTrigger={handleTrigger} handleGameStart={handleGameStart}/>:"00:00"}</h4>
             <select name="dificulty" id="" onChange={handleLevel} disabled={gameStarted===true}>
                     <option value="0" selected>Dificuldade</option>
                     <option value="1">Simples</option>

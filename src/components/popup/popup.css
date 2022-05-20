@@ -32,4 +32,5 @@ p{
 .modal-button{
     margin: 20px 0px 0px;
     padding: 10px;
+    cursor: pointer;
 }
