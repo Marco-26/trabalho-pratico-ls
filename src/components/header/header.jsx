@@ -20,7 +20,6 @@ const Header = (props) => {
             <br />
 
             {/* Botoes com conditional rendering */}
-            
             {!gameStarted && <button disabled={level === 0} onClick={handleGameStart}>Começar</button>}
             {gameStarted && <button disabled={level === 0} onClick={handleGameStart}>Parar jogo</button>}
         </div>

@@ -5,7 +5,7 @@ import { data } from "../data"
 import styled from "styled-components"
 
 const Grid = (props) => {
-    const {popUp,level} = props;
+    const {level} = props;
     
     const cellsArray = []
     let cellQuantity, cssRepeat;    

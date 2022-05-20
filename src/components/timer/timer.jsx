@@ -7,8 +7,10 @@ const Timer = (props) => {
 
   const minutes = Math.floor(timeLeft / 60000) % 60;
   const seconds = Math.floor(timeLeft / 1000) % 60;
-  
-  if(timeLeft == 0) setTrigger(true);
+ 
+  if(timeLeft == 0){
+    setTrigger(true);
+  }
 
   return (
     <div>
