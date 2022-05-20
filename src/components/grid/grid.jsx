@@ -5,7 +5,7 @@ import { data } from "../data"
 import styled from "styled-components"
 
 const Grid = (props) => {
-    const {level} = props;
+    const {popUp,level} = props;
     
     const cellsArray = []
     let cellQuantity, cssRepeat;    
@@ -69,7 +69,7 @@ const Grid = (props) => {
                 ))}
             </div>
         </div>
-    );  
+    );
 }
 
 function randomChar() {
