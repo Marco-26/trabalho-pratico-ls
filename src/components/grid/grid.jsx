@@ -41,7 +41,7 @@ const Grid = (props) => {
             break;
     }
     
-    for(let i=0; i<cellQuantity; i++){
+    for(let i=0; i < cellQuantity; i++){
         cellsArray.push(null);
     }
     
@@ -56,10 +56,17 @@ const Grid = (props) => {
         grid-template-columns: repeat(${cssRepeat}, 30px);
     `;
 
+    let word = "Ola"
+    let letter;
+    for (let index = 0; index <word.length;index++){
+        letter = word.charAt(index);
+    }
+   
     return(
         <div className="grid-container">
             <Grid>
-                {cellsArray.map(() => <div className="cell">{randomChar()}</div>)}
+                {/* {cellsArray.map(() => <div className="cell">{letter}</div>)} */}
+                {cellsArray.map(() => <div className="cell">{char()}</div>)}
             </Grid>
             <div className="words">
                 {words.map((word) => (
@@ -77,6 +84,21 @@ function randomChar() {
     let characters = 'abcdefghijklmnopqrstuvwxyz';
     char = characters.charAt(Math.floor(Math.random()*characters.length));
     return char;
+}  
+function char() {
+    let test = "Ola";
+    return(
+    <>
+        <ul>
+            {(() =>{
+                for(let i= 0; i<test.length;i++){
+                    return <li>{test.charAt(i)}</li>
+                }
+            })()}
+        </ul>
+    </>
+
+    );
 }  
 
 export default Grid;

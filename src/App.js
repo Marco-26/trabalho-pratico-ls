@@ -37,15 +37,26 @@ function App() {
     setGame(!gameStarted);
   }
 
-  return (
-    <div className="App">
-      <Header gameStarted={gameStarted} handleGameStart={handleGameStart} popUp={modalTrigger} handleTrigger={setTrigger} level={level} handleLevel={handleLevel} timer={timer} />
-      <Grid level={level} />
-      <Popup trigger={modalTrigger} handleTrigger={handleTrigger} title="O tempo acabou!" buttonTxt="Fechar">
-        Para a próxima tente ser mais rápido!
-      </Popup>
+  let test = "Hello";
+  let word = [];
+  for (const value of test) {
+    word.push(<p>{value}</p>);
+  }
+  return(
+    <div>
+      {word}
     </div>
   );
+
+  // return (
+  //   <div className="App">
+  //     <Header gameStarted={gameStarted} handleGameStart={handleGameStart} popUp={modalTrigger} handleTrigger={setTrigger} level={level} handleLevel={handleLevel} timer={timer} />
+  //     <Grid level={level} />
+  //     <Popup trigger={modalTrigger} handleTrigger={handleTrigger} title="O tempo acabou!" buttonTxt="Fechar">
+  //       Para a próxima tente ser mais rápido!
+  //     </Popup>
+  //   </div>
+  // );
 }
 
 export default App;
