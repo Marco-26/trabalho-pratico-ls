@@ -12,10 +12,10 @@ const Header = (props) => {
             <h4>Pontuação: </h4>
             <h4>Tempo restante: {gameStarted ? <Timer timer={timer} setTrigger={handleTrigger} handleGameStart={handleGameStart}/>:"00:00"}</h4>
             <select name="dificulty" id="" onChange={handleLevel} disabled={gameStarted===true}>
-                    <option value="0" selected>Dificuldade</option>
-                    <option value="1">Simples</option>
-                    <option value="2">Intermédio</option>
-                    <option value="3">Avançado</option>
+                    <option value={0}>Dificuldade</option>
+                    <option value={1}>Simples</option>
+                    <option value={2}>Intermédio</option>
+                    <option value={3}>Avançado</option>
             </select>
             <br />
 
