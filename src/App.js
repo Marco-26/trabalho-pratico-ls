@@ -16,15 +16,15 @@ function App() {
     }
     if (e.currentTarget.value === '1') {
       setLevel(1);
-      setTimer(4);
+      setTimer(.1);
     }
     if (e.currentTarget.value === '2') {
       setLevel(2);
-      setTimer(3);
+      setTimer(.1);
     }
     if (e.currentTarget.value === '3') {
       setLevel(3);
-      setTimer(0.1);
+      setTimer(.1);
     }
   };
 

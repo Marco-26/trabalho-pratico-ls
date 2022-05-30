@@ -1,9 +1,10 @@
 export const data = [
-    "JavaScript",
+    "Ruby",
     "HTML",
     "CSS",
-    "React",
+    "Node",
     "PHP",
     "Lua",
-    "Angular"
+    "Vue",
+    "Java"
 ]

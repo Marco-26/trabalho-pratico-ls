@@ -2,7 +2,7 @@ import React from "react";
 import "../reset.css";
 import "./grid.css";
 import { data } from "../data";
-import { Board } from "./board"
+import { Board } from "./board";
 
 const Grid = (props) => {
   const { level } = props;
@@ -32,13 +32,13 @@ const Grid = (props) => {
       break;
     default:
       break;
-  }  
+  }
 
   let words = getData(wordAmount);
 
   return (
     <div className="grid-container">
-      <Board cssRepeat={cssRepeat}>{generateGrid(cellQuantity)}</Board>
+      <Board cssRepeat={cssRepeat}>{generateGrid(cellQuantity, words)}</Board>
       <div className="words">
         {words.map((word) => (
           <div>
@@ -50,7 +50,7 @@ const Grid = (props) => {
   );
 };
 
-function getData(wordAmount){
+function getData(wordAmount) {
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
   const newData = shuffle(data);
 
@@ -63,22 +63,48 @@ function getData(wordAmount){
   return words;
 }
 
-function generateGrid(cellQuantity){
-    const cellsArray = [];
-    let word = "php"; // a lista de palavras escolhidas
+function generateGrid(cellQuantity, words) {
+  const cellsArray = [];
+  let word = "php"; // a lista de palavras escolhidas
 
-    let generate = true;
-    for (let i = 0; i < cellQuantity; i++) {
-      if (generate) {
-        i += word.length-1; // devemos adicionar ao index a length das palavras selecionadas
-        cellsArray.push(generateWord(word, i));
-      } else {
-        cellsArray.push(<div className="cell" key={i}>{randomChar()}</div>);
-      }
-      generate = false;
+  // let generate = true;
+  // for (let i = 0; i < cellQuantity; i++) {
+  //   if (generate) {
+  //     i += word.length-1; // devemos adicionar ao index a length das palavras selecionadas
+  //     cellsArray.push(generateWord(word, i));
+  //   } else {
+  //     cellsArray.push(<div className="cell" key={i}>{randomChar()}</div>);
+  //   }
+  //   generate = false;
+  // }
+  let generate = true;
+  // for (let index = 0; index < cellQuantity; index++) {
+  //     if(generate){
+  //       // gerar todas as palavras de uma vez, em localizações random
+  //       for (let i = 0; i < words.length; i++) {
+  //         cellsArray.push(generateWord(words[i],index));
+  //         index += words[i].length;
+  //       }
+  //       generate = false;
+  //     }
+  //     cellsArray.push(<div className="cell"></div>);
+  // }
+
+  //TODO: escrever palavras na board em locais random
+  let tempWords = [...words];
+
+  for (let index = 0; index < cellQuantity; index++) {
+    for (let i = 0; i < tempWords.length; i++) {
+      cellsArray.push(generateWord(tempWords[i], index));
+      // index += tempWords[i].length;
+      console.log(tempWords);
+      tempWords.shift();
+      break;
     }
+    cellsArray.push(<div className="cell"></div>);
+  }
 
-    return cellsArray;
+  return cellsArray;
 }
 
 function randomChar() {
@@ -88,10 +114,15 @@ function randomChar() {
   return char;
 }
 
-function generateWord(word,index) {
+function generateWord(word, index) {
   let wordArr = [];
   for (const value of word) {
-    wordArr.push(<div className="cell" key={index}>{value}</div>);
+    wordArr.push(
+      <div className="cell" key={index}>
+        {value}
+      </div>
+    );
+    index++;
   }
   return wordArr;
 }

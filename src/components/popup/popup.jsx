@@ -2,7 +2,7 @@ import React from "react";
 import './popup.css';
 
 const Popup = (props) => {
-    const {trigger, handleTrigger, title, children, buttonTxt} = props;
+    const {trigger, handleTrigger, title,children, buttonTxt} = props;
 
     return (trigger) ? (
         <div className="modal">
