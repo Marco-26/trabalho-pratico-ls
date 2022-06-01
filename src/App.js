@@ -8,7 +8,7 @@ function App() {
   const [timer, setTimer] = useState(0);
   const [modalTrigger, setTrigger] = useState(false);
   const [gameStarted, setGame] = useState(false);
-
+  let cells;
   const handleLevel = (e) => {
     if (e.currentTarget.value === '0') {
       setLevel(0);
@@ -28,6 +28,23 @@ function App() {
     }
   };
 
+  switch (level) {
+    case 0:
+      cells = Array.from({length:0});
+      break;
+    case 1:
+      cells = Array.from({length:64});
+      break;
+    case 2:
+      cells = Array.from({length:90});
+      break;
+    case 3:
+      cells = Array.from({length:100});
+      break;
+    default:
+      break;
+  }
+
   const handleTrigger = () => {
     setTrigger(!modalTrigger);
   }
@@ -37,9 +54,10 @@ function App() {
   }
 
   return (
+    //TODO: apenas ativar o componente grid quando comecar o jogo
     <div className="App">
       <Header gameStarted={gameStarted} handleGameStart={handleGameStart} popUp={modalTrigger} handleTrigger={setTrigger} level={level} handleLevel={handleLevel} timer={timer} />
-      <Grid level={level} />
+      {gameStarted && <Grid cells={cells} level={level}/>}
       <Popup trigger={modalTrigger} handleTrigger={handleTrigger} title="O tempo acabou!" buttonTxt="Fechar">
         Para a próxima tente ser mais rápido!
       </Popup>

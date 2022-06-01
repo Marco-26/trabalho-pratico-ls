@@ -1,33 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "../reset.css";
 import "./grid.css";
 import { data } from "../data";
 import { Board } from "./board";
+import produce from "immer";
 
 const Grid = (props) => {
-  const { level } = props;
+  const { cells, level } = props;
+  const [grid, setGrid] = useState(cells);
 
-  let cellQuantity, cssRepeat, wordAmount;
+  let cssRepeat, wordAmount;
 
   switch (level) {
     case 0:
       wordAmount = 0;
-      cellQuantity = 0;
       cssRepeat = 0;
       break;
     case 1:
       wordAmount = 3;
-      cellQuantity = 64;
       cssRepeat = 8;
       break;
     case 2:
       wordAmount = 4;
-      cellQuantity = 81;
       cssRepeat = 9;
       break;
     case 3:
       wordAmount = 5;
-      cellQuantity = 100;
       cssRepeat = 10;
       break;
     default:
@@ -38,7 +36,17 @@ const Grid = (props) => {
 
   return (
     <div className="grid-container">
-      <Board cssRepeat={cssRepeat}>{generateGrid(cellQuantity, words)}</Board>
+      <Board cssRepeat={cssRepeat}>
+        {grid.map((i) => (
+          <div
+            key={i}
+            className="cell"
+          >
+            {randomChar()}
+          </div>
+        ))}
+        ;
+      </Board>
       <div className="words">
         {words.map((word) => (
           <div>
@@ -57,35 +65,10 @@ function getData(wordAmount) {
   const words = [];
 
   for (let index = 0; index < wordAmount; index++) {
-     words.push(newData[index]);
+    words.push(newData[index]);
   }
 
   return words;
-}
-
-function generateGrid(cellQuantity, words) {
-  const cellsArray = [];
-
-  let tempWords = [...words];
-  
-  let random = [];
-
-  for (let index = 0; index < tempWords.length; index++) {
-    random[index] = Math.floor(Math.random() * cellQuantity);   
-  }
-  random.sort(function(a, b){return a - b});
-
-  for (let index = 0; index < cellQuantity; index++) {
-    for (let i = 0; i < tempWords.length; i++) {
-      tempWords[i].split('').map(item => cellsArray.push(<div className="cell">{item}</div>));
-      index+=tempWords[i].length
-      tempWords.shift();
-      break;
-    }
-    cellsArray.push(<div className="cell">{randomChar()}</div>);
-  }
-
-  return cellsArray;
 }
 
 function randomChar() {
