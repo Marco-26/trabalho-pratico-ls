@@ -3,7 +3,6 @@ import "../reset.css";
 import "./grid.css";
 import { data } from "../data";
 import { Board } from "./board";
-import produce from "immer";
 
 const Grid = (props) => {
   const { cells, level } = props;
@@ -34,18 +33,34 @@ const Grid = (props) => {
 
   let words = getData(wordAmount);
 
+  const handleClick = (key) => {
+    setGrid(
+      grid.map((cell, i) => {
+        if (i === key) {
+          return {
+            clicked: true,
+          };
+        }
+        return cell;
+      })
+    );
+  };
+
   return (
     <div className="grid-container">
       <Board cssRepeat={cssRepeat}>
-        {grid.map((i) => (
+        {grid.map((cell, i) => (
           <div
             key={i}
             className="cell"
+            onClick={() => {
+              handleClick(i);
+            }}
+            style={{ backgroundColor: cell.clicked ? "yellow" : "white" }}
           >
             {randomChar()}
           </div>
         ))}
-        ;
       </Board>
       <div className="words">
         {words.map((word) => (
