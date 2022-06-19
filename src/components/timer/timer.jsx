@@ -1,7 +1,7 @@
 import useTimer from './timer-utils';
 
 const Timer = (props) => {
-  const {timer,setTrigger,handleGameStart,setLost} = props
+  const {timer,setTrigger,setLost} = props
   const endTime = new Date().getTime() + 60000 * timer; // tempo depende da dificuldade escolhida
   const [timeLeft] = useTimer(endTime);
 
@@ -10,14 +10,11 @@ const Timer = (props) => {
  
   if(timeLeft === 0){
     setLost(true);
-    handleGameStart();
     setTrigger(true);
   }
 
   return (
-    <div>
       <p>{`${minutes}:${seconds}`}</p>
-    </div>
   );
 }
 

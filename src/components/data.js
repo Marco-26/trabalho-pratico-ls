@@ -7,5 +7,11 @@ export const data = [
     "Lua",
     "Vue",
     "Java",
-    "pagar",
+    "Angular",
+    "Python",
+    "Kotlin",
+    "Swift",
+    "Matlab",
+    "Redux",
+    "Sass"
 ]

@@ -7,7 +7,7 @@ import Leters from "./leters";
 let wordsFound = 0;
 
 const Grid = (props) => {
-  const { mapa, palavra, cssRepeat, wordpose, wordAmount,setTrigger,handleGameStart,setWin} = props;
+  const { mapa, palavra, cssRepeat, wordpose, wordAmount,setTrigger,setWin} = props;
   const [grid, setGrid] = useState(mapa);
   const [posicao, setposicao] = useState([]);
   const [tecla, settecla] = useState([]);
@@ -83,7 +83,6 @@ const Grid = (props) => {
           wordsFound++;
           if(wordsFound === wordAmount){
             setTrigger(true);
-            handleGameStart();
             setWin(true);
             wordsFound = 0;
           }
@@ -201,7 +200,7 @@ const Grid = (props) => {
           {words.map((word) => (
             <div
               style={{
-                backgroundColor: word.clicked ? "rgb(100, 2300, 136)" : "red",
+                textDecoration: word.clicked ? "line-through" : ""
               }}
             >
               <p>{word.palavra}</p>

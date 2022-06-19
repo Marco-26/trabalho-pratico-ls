@@ -22,20 +22,16 @@ function App() {
     }
     if (e.currentTarget.value === "1") {
       setLevel(1);
-      setTimer(39);
+      setTimer(4);
     }
     if (e.currentTarget.value === "2") {
       setLevel(2);
-      setTimer(0.1);
+      setTimer(3);
     }
     if (e.currentTarget.value === "3") {
       setLevel(3);
-      setTimer(0.1);
+      setTimer(2);
     }
-  };
-
-  const arrayProps = {
-    clicked: false,
   };
 
   switch (level) {
@@ -123,8 +119,6 @@ function App() {
           wordpose={wordpose}
           wordAmount={wordAmount}
           setTrigger={setTrigger}
-          handleGameStart={handleGameStart}
-          setLost={setLost}
           setWin={setWin}
         />
       )}
@@ -135,6 +129,7 @@ function App() {
           title="Ganhou o jogo"
           buttonTxt="Fechar"
           resetWinLost={resetWinLost}
+          handleGameStart={handleGameStart}
         >
           Parabéns, você ganhou o jogo!
         </Popup>
@@ -146,6 +141,7 @@ function App() {
           title="O tempo acabou!"
           buttonTxt="Fechar"
           resetWinLost={resetWinLost}
+          handleGameStart={handleGameStart}
         >
           Para a próxima tente ser mais rápido!
         </Popup>

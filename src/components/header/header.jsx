@@ -2,15 +2,26 @@ import React from "react";
 import { Timer } from "../index";
 import '../reset.css';
 import './header.css';
+import { data } from "../data";
 
 const Header = (props) => {
     const {gameStarted, handleGameStart,handleTrigger,level, handleLevel, timer,setLost} = props;
 
+    function addWord(){
+        var word = prompt("Insira uma palavra:");
+        if (word === "") {
+            return;
+        } else if (word) {
+            data.push(word);
+        }
+    }
+
     return(
         <div className="header">
             <h1>Sopa de letras - Linguagens Script</h1>
-            <h4>Tempo restante: {gameStarted ? <Timer timer={timer} setTrigger={handleTrigger} handleGameStart={handleGameStart} setLost={setLost}/>:"00:00"}</h4>
-            <select className="select" name="dificulty" id="" onChange={handleLevel} disabled={gameStarted===true}>
+            {gameStarted && <h1><Timer timer={timer} setTrigger={handleTrigger} setLost={setLost}/></h1>}
+            <button className="button-5" onClick={() => addWord()} disabled={gameStarted===true} style={{backgroundColor: gameStarted ? "#dadada" : "#fa6400", cursor: gameStarted ? 'auto' : 'pointer'}}>Adicionar palavra</button>
+            <select className="select" name="dificulty" id="" onChange={handleLevel} disabled={gameStarted===true} style={{backgroundColor: gameStarted ? "#dadada" : "#fa6400", cursor: gameStarted ? 'auto' : 'pointer'}}>
                     <option value={0}>Dificuldade</option>
                     <option value={1}>Simples</option>
                     <option value={2}>Intermédio</option>
@@ -19,8 +30,8 @@ const Header = (props) => {
             <br />
 
             {/* Botoes com conditional rendering */}
-            {!gameStarted && <button className="bottun" disabled={level === 0} onClick={handleGameStart}>Começar</button>}
-            {gameStarted && <button className="bottun" disabled={level === 0} onClick={handleGameStart}>Parar jogo</button>}
+            {!gameStarted && <button className="button-5 start" disabled={level === 0} onClick={handleGameStart} style={{backgroundColor: level === 0 ? "#dadada" : "#fa6400", cursor: level === 0 ? 'auto' : 'pointer'}}>Começar</button>}
+            {gameStarted && <button className="button-5 start" disabled={level === 0} onClick={handleGameStart} style={{backgroundColor: level === 0 ? "#dadada" : "#fa6400", cursor: level === 0 ? 'auto' : 'pointer'}}>Parar jogo</button>}
         </div>
     ); 
 }

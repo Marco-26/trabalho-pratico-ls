@@ -9,19 +9,11 @@
 }
 
 .cell{
-   
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     width: 30px;
     height: 30px;
-    border: 2px solid rgb(73, 78, 231);
+    border: 1px solid;
     margin:0px;
     padding-top: 6px;
-    border-radius: 3px;
     text-align: center;
     align-items: center;
 }
@@ -31,20 +23,14 @@
 }
 
 .cell:hover{
-    transform: scale(0.85);
+    transform: scale(0.95);
     cursor: pointer;
 }
 
 .words{
     margin-left: 30px;
-    
-    
-    
-   
 }
 
 .words p {
     margin: 10px;
-     
-   
 }
