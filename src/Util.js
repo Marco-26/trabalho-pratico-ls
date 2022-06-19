@@ -238,7 +238,7 @@ function gridtemp(cssRepeat, palavra) {
   for (let i = 0; i < cssRepeat; i++) {
     for (let j = 0; j < cssRepeat; j++) {
       if (tempGrid[i][j] === 0) {
-        //tempGrid[i][j] = randomChar();
+        tempGrid[i][j] = randomChar();
       }
     }
   }
