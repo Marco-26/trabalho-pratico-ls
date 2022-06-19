@@ -6,5 +6,6 @@ export const data = [
     "PHP",
     "Lua",
     "Vue",
-    "Java"
+    "Java",
+    "pagar",
 ]

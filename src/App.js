@@ -2,69 +2,154 @@ import { Header } from "./components/index";
 import { Grid } from "./components/index";
 import { Popup } from "./components/index";
 import React, { useState } from "react";
+import { data } from "./components/data";
+import gridtemp from "./Util";
 
 function App() {
   const [level, setLevel] = useState(0);
   const [timer, setTimer] = useState(0);
   const [modalTrigger, setTrigger] = useState(false);
   const [gameStarted, setGame] = useState(false);
+  const [win, setWin] = useState(false);
+  const [lost, setLost] = useState(false);
+
+  let cssRepeat, wordAmount;
   
-  let cells;
   const handleLevel = (e) => {
-    if (e.currentTarget.value === '0') {
+    if (e.currentTarget.value === "0") {
       setLevel(0);
       setTimer(0);
     }
-    if (e.currentTarget.value === '1') {
+    if (e.currentTarget.value === "1") {
       setLevel(1);
-      setTimer(2);
+      setTimer(39);
     }
-    if (e.currentTarget.value === '2') {
+    if (e.currentTarget.value === "2") {
       setLevel(2);
-      setTimer(2);
+      setTimer(0.1);
     }
-    if (e.currentTarget.value === '3') {
+    if (e.currentTarget.value === "3") {
       setLevel(3);
-      setTimer(2);
+      setTimer(0.1);
     }
   };
 
   const arrayProps = {
-    clicked: false
-  }
+    clicked: false,
+  };
 
   switch (level) {
     case 0:
-      cells = Array.from({length:0}, () => arrayProps);
+      wordAmount = 0;
+      cssRepeat = 0;
       break;
     case 1:
-      cells = Array.from({length:64}, () => arrayProps);
+      wordAmount = 3;
+      cssRepeat = 8;
       break;
     case 2:
-      cells = Array.from({length:90}, () => arrayProps);
+      wordAmount = 4;
+      cssRepeat = 9;
       break;
     case 3:
-      cells = Array.from({length:100}, () => arrayProps);
+      wordAmount = 5;
+      cssRepeat = 10;
       break;
     default:
       break;
   }
 
+  let palavra = getData(wordAmount);
+  let wordpose = [];
+
+  function getData(wordAmount) {
+    const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+    const newData = shuffle(data);
+
+    const words = [];
+
+    for (let index = 0; index < wordAmount; index++) {
+      words.push(newData[index]);
+    }
+
+    return words;
+  }
+
+  let aux = gridtemp(cssRepeat, palavra);
+
+  let grid = aux.mapa;
+  wordpose = aux.wordpose;
+
+  for (let j = 0; j < wordpose.length; j++) {
+    wordpose[j].sort();
+  }
+
+  let tempPalavra = palavra.map((item) => {
+    return {
+      palavra: item.toUpperCase(),
+      clicked: false,
+    };
+  });
+
   const handleTrigger = () => {
     setTrigger(!modalTrigger);
-  }
+  };
 
   const handleGameStart = () => {
     setGame(!gameStarted);
+  };
+
+  const resetWinLost = () =>{
+    setLost(false);
+    setWin(false);
   }
 
   return (
-    <div className="App">
-      <Header gameStarted={gameStarted} handleGameStart={handleGameStart} popUp={modalTrigger} handleTrigger={setTrigger} level={level} handleLevel={handleLevel} timer={timer} />
-      {gameStarted && <Grid cells={cells} level={level}/>}
-      <Popup trigger={modalTrigger} handleTrigger={handleTrigger} title="O tempo acabou!" buttonTxt="Fechar">
-        Para a próxima tente ser mais rápido!
-      </Popup>
+    <div className="container_app">
+      <Header
+        gameStarted={gameStarted}
+        handleGameStart={handleGameStart}
+        handleTrigger={setTrigger}
+        level={level}
+        handleLevel={handleLevel}
+        timer={timer}
+        setLost={setLost}
+      />
+      {gameStarted && (
+        <Grid
+          mapa={grid}
+          palavra={tempPalavra}
+          cssRepeat={cssRepeat}
+          wordpose={wordpose}
+          wordAmount={wordAmount}
+          setTrigger={setTrigger}
+          handleGameStart={handleGameStart}
+          setLost={setLost}
+          setWin={setWin}
+        />
+      )}
+      {win && (
+        <Popup
+          trigger={modalTrigger}
+          handleTrigger={handleTrigger}
+          title="Ganhou o jogo"
+          buttonTxt="Fechar"
+          resetWinLost={resetWinLost}
+        >
+          Parabéns, você ganhou o jogo!
+        </Popup>
+      )}
+      {lost && (
+        <Popup
+          trigger={modalTrigger}
+          handleTrigger={handleTrigger}
+          title="O tempo acabou!"
+          buttonTxt="Fechar"
+          resetWinLost={resetWinLost}
+        >
+          Para a próxima tente ser mais rápido!
+        </Popup>
+      )}
     </div>
   );
 }

@@ -4,14 +4,13 @@ import '../reset.css';
 import './header.css';
 
 const Header = (props) => {
-    const {gameStarted, handleGameStart,handleTrigger,level, handleLevel, timer} = props;
+    const {gameStarted, handleGameStart,handleTrigger,level, handleLevel, timer,setLost} = props;
 
     return(
         <div className="header">
             <h1>Sopa de letras - Linguagens Script</h1>
-            <h4>Pontuação: </h4>
-            <h4>Tempo restante: {gameStarted ? <Timer timer={timer} setTrigger={handleTrigger} handleGameStart={handleGameStart}/>:"00:00"}</h4>
-            <select name="dificulty" id="" onChange={handleLevel} disabled={gameStarted===true}>
+            <h4>Tempo restante: {gameStarted ? <Timer timer={timer} setTrigger={handleTrigger} handleGameStart={handleGameStart} setLost={setLost}/>:"00:00"}</h4>
+            <select className="select" name="dificulty" id="" onChange={handleLevel} disabled={gameStarted===true}>
                     <option value={0}>Dificuldade</option>
                     <option value={1}>Simples</option>
                     <option value={2}>Intermédio</option>
@@ -20,8 +19,8 @@ const Header = (props) => {
             <br />
 
             {/* Botoes com conditional rendering */}
-            {!gameStarted && <button disabled={level === 0} onClick={handleGameStart}>Começar</button>}
-            {gameStarted && <button disabled={level === 0} onClick={handleGameStart}>Parar jogo</button>}
+            {!gameStarted && <button className="bottun" disabled={level === 0} onClick={handleGameStart}>Começar</button>}
+            {gameStarted && <button className="bottun" disabled={level === 0} onClick={handleGameStart}>Parar jogo</button>}
         </div>
     ); 
 }
